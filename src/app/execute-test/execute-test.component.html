@@ -1,0 +1,40 @@
+<div class="container" style="margin-top: 70px;">
+
+  <div class="row">
+
+    <div class="col-sm-10 offset-sm-2">
+
+      <div>
+        <form>
+          <div class="form-group">
+            <label for="exampleFormControlSelect1">Aplicación</label>
+            <select class="form-control" id="exampleFormControlSelect1"
+              (change)="selectAplication($event.target.value)">
+              <option [ngValue]="null" disabled>Seleccione aplicación</option>
+              <option *ngFor="let application of applications" [ngValue]="application">
+                {{ application.name }}
+              </option>
+            </select>
+          </div>
+          <div class="card text-center" *ngIf="applicationSelect">
+            <div class="card-header">
+              {{applicationSelect.name}}
+            </div>
+            <div class="card-block">
+              <p class="card-text">
+                {{applicationSelect.description}}
+              </p>
+            </div>
+
+          </div>
+
+        </form>
+        <br />
+        <button class="btn btn-primary" (click)="executeTest()">Ejecutar Prueba</button>
+      </div>
+    </div>
+  </div>
+
+
+
+</div>

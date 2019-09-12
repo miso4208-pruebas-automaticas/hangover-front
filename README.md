@@ -1,5 +1,7 @@
 # HangoverFront
 
+Aplicacion de administracion y ejecucion de pruebas para proyectos web y mobile
+
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 8.3.0.
 
 ## Development server
