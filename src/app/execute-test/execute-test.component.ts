@@ -21,8 +21,7 @@ export class ExecuteTestComponent implements OnInit {
   }
 
   public selectAplication(application) {    
-    this.applicationSelect = this.applications.filter((item) => item.name == application)[0];
-    console.log("SELECCION: ", JSON.stringify(this.applicationSelect));
+    this.applicationSelect = this.applications.filter((item) => item.name == application)[0];    
   }
 
 
