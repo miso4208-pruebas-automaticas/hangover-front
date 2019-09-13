@@ -8,6 +8,7 @@ import { HeaderComponent } from './header/header.component';
 import { FooterComponent } from './footer/footer.component';
 import { FormsModule } from '@angular/forms';
 import { ExecuteTestComponent } from './execute-test/execute-test.component';
+import { ReportsComponent } from './reports/reports.component';
 
 @NgModule({
   declarations: [
@@ -15,7 +16,7 @@ import { ExecuteTestComponent } from './execute-test/execute-test.component';
     HomeComponent,
     HeaderComponent,
     FooterComponent,    
-    ExecuteTestComponent
+    ExecuteTestComponent, ReportsComponent
   ],
   imports: [
     BrowserModule,
