@@ -5,6 +5,8 @@ import {ApplicationsDto} from '../data/ApplicationsDto';
 import { LevelsDto } from '../data/LevelsDto';
 import { TypeDto } from '../data/TypesDto';
 import { TestTypeService } from '../test-type.service';
+import { ExecuteTestService } from '../execute-test.service';
+import { ExecuteDto } from '../data/ExecuteDto';
 
 @Component({
   selector: 'app-execute-test',
@@ -18,10 +20,13 @@ export class ExecuteTestComponent implements OnInit {
   applications:Array<ApplicationsDto>;
   applicationSelect:ApplicationsDto;
 
+  executeData:ExecuteDto;
+
   constructor(
     public applicationsService: ApplicationsService,
     public testLevelsService: TestLevelsService,
-    public testTypeService: TestTypeService
+    public testTypeService: TestTypeService,
+    public executeTestService: ExecuteTestService
   ) { }
 
   ngOnInit() {
@@ -35,7 +40,11 @@ export class ExecuteTestComponent implements OnInit {
   }
 
 
-  executeTest() {
+  public executeTest() {
+    this.executeTestService.executeTest(this.executeData).subscribe(res => {
+      console.log(res['code']);
+
+    });
 
   }
 
