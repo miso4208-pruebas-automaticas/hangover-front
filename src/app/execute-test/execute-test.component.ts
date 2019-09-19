@@ -22,7 +22,12 @@ export class ExecuteTestComponent implements OnInit {
 
   executeData:ExecuteDto;
 
-  constructor(
+
+  msgResult:string;
+  typeMsgResult = 'alert alert-success';
+  isMiddleDivVisible: boolean;
+
+  constructor(    
     public applicationsService: ApplicationsService,
     public testLevelsService: TestLevelsService,
     public testTypeService: TestTypeService,
@@ -30,6 +35,7 @@ export class ExecuteTestComponent implements OnInit {
   ) { }
 
   ngOnInit() {
+    this.isMiddleDivVisible = false;
     this.applications = this.applicationsService.getApplications();
     this.levels = this.testLevelsService.getLevels();
     this.types = this.testTypeService.getTypes();
@@ -41,11 +47,28 @@ export class ExecuteTestComponent implements OnInit {
 
 
   public executeTest() {
+    this.isMiddleDivVisible = false;
     this.executeTestService.executeTest(this.executeData).subscribe(res => {
-      console.log(res['code']);
-
+      this.typeMsgResult = 'alert alert-success';
+      console.log('EJECUCION OK: ', JSON.stringify(res));
+      this.msgResult = "Ejecución realizada con exito.";
+      this.isMiddleDivVisible = true;
+      
+    }, (err) => {
+      this.typeMsgResult = 'alert alert-danger'; 
+      console.log('EJECUCION ERROR: ', err);
+      this.msgResult = "Ocurrio un error al ejecutar la prueba.";
+      this.isMiddleDivVisible = true;
     });
-
+    
+    
   }
+
+
+
+  
+
+
+
 
 }

@@ -67,7 +67,22 @@
           <br />
           <button class="btn btn-primary" (click)="executeTest()">Ejecutar Prueba</button>
         </div>
+
+
+        <br />  
+        <div [style.visibility]="isMiddleDivVisible ? 'visible' : 'hidden'" class="{{typeMsgResult}} alert-dismissible fade show" role="alert">
+          {{msgResult}}
+          <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+
       </div>
+
+
+      
+
+
     </div>
   
   
