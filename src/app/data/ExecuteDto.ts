@@ -1,3 +1,4 @@
+import {ApplicationsDto} from '../data/ApplicationsDto';
 export class ExecuteDto {
     aplication:string;
     level:string;
