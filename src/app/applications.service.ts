@@ -8,16 +8,19 @@ export class ApplicationsService {
 
   applications = [
     {
+      id:"HABITICA_WEB",
       name:"Habitica Web",
       description:"Habitica es una aplicación de seguimiento a tareas diarias catalogado como una app de productividad por medio de juego de roles.",
       version:"V3"
     },
     {
+      id:"HABITICA",
       name:"Habitica mobile",
       description:"Habitica es una aplicación de seguimiento a tareas diarias catalogado como una app de productividad por medio de juego de roles.",
-      version:"2.4.2"
+      version:"2.4.2"      
     },
     {
+      id:"CALENDULA",
       name:"Calendula",
       description:"funciona como recordatorio para el seguimiento de toma de medicamentos.",
       version:"1.0.0"

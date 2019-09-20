@@ -31,6 +31,7 @@ export class ExecuteTestComponent implements OnInit {
   appSelect;
   levelSelect;
   typeSelect;
+  numberExecution;
 
   constructor(    
     public applicationsService: ApplicationsService,
@@ -57,9 +58,11 @@ export class ExecuteTestComponent implements OnInit {
 
 
     let data:ExecuteDto = new ExecuteDto();
-    data.aplication = this.appSelect.name;
+    data.aplication = this.appSelect.id;
     data.level = this.levelSelect.name;
-    data.type = this.typeSelect.name;     
+    data.type = this.typeSelect.name;  
+    data.numberExecution = this.numberExecution;
+    data.code = this.generateCode();   
     console.log("DATA: ", JSON.stringify(data));
 
     this.executeTestService.executeTest(data).subscribe(res => {
@@ -75,12 +78,13 @@ export class ExecuteTestComponent implements OnInit {
       this.isMiddleDivVisible = true;
     });
     
-    
   }
 
 
 
-  
+  private generateCode() {
+    return Math.random().toString(36).substr(2, 9);
+ }
 
 
 

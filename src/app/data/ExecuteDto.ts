@@ -3,4 +3,6 @@ export class ExecuteDto {
     aplication:string;
     level:string;
     type:string;
+    numberExecution:number;
+    code:string;
 }
