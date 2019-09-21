@@ -32,6 +32,7 @@ export class ExecuteTestComponent implements OnInit {
   levelSelect;
   typeSelect;
   numberExecution;
+  code;
 
   constructor(    
     public applicationsService: ApplicationsService,
@@ -41,7 +42,6 @@ export class ExecuteTestComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    
     this.isMiddleDivVisible = false;
     this.applications = this.applicationsService.getApplications();
     this.levels = this.testLevelsService.getLevels();
@@ -55,20 +55,20 @@ export class ExecuteTestComponent implements OnInit {
 
   public executeTest() {    
     this.isMiddleDivVisible = false;
-
+    this.code = this.generateCode();
 
     let data:ExecuteDto = new ExecuteDto();
     data.aplication = this.appSelect.id;
     data.level = this.levelSelect.name;
     data.type = this.typeSelect.name;  
     data.numberExecution = this.numberExecution;
-    data.code = this.generateCode();   
+    data.code = this.code   
     console.log("DATA: ", JSON.stringify(data));
 
     this.executeTestService.executeTest(data).subscribe(res => {
       this.typeMsgResult = 'alert alert-success';
       console.log('EJECUCION OK: ', JSON.stringify(res));
-      this.msgResult = "Ejecución realizada con exito.";
+      this.msgResult = "Ejecución realizada con exito. Codigo: " + this.code;
       this.isMiddleDivVisible = true;
       
     }, (err) => {
