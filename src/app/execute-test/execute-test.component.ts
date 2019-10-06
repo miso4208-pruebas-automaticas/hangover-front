@@ -87,9 +87,10 @@ export class ExecuteTestComponent implements OnInit {
     data.aplication = this.appSelect.id;
     data.level = this.levelSelect.name;
     data.type = this.typeSelect.name;  
+    data.subType = this.subTypeSelect.name;
     data.numberExecution = this.numberExecution;
     data.code = this.code   
-    console.log("DATA: ", JSON.stringify(data));
+    console.log("execution DATA: ", JSON.stringify(data));
 
     this.executeTestService.executeTest(data).subscribe(res => {
       this.typeMsgResult = 'alert alert-success';
