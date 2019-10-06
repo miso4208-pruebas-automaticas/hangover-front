@@ -72,7 +72,7 @@ export class ExecuteTestComponent implements OnInit {
 
   public selectSubType() {
     this.ramdonSelect = false;
-    if (this.subTypeSelect.name === 'Ramdon') {
+    if (this.subTypeSelect.name === 'random') {
       this.ramdonSelect = true;
     }
 

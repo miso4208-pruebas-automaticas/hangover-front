@@ -10,12 +10,12 @@ export class TestTypeService {
   ]
 
   subTypesMobile = [
-    {name:"Ramdon"},
+    {name:"random"},
     {name:"BDD"},    
   ]
 
   subTypesWeb = [    
-    {name:"Headless"}
+    {name:"headless"}
   ]
 
   constructor() { }
