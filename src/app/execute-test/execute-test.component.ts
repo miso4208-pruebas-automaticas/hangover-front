@@ -6,6 +6,7 @@ import { LevelsDto } from '../data/LevelsDto';
 import { TypeDto } from '../data/TypesDto';
 import { TestTypeService } from '../test-type.service';
 import { ExecuteTestService } from '../execute-test.service';
+import {LocalStorageService} from '../local-storage.service';
 import { ExecuteDto } from '../data/ExecuteDto';
 
 @Component({
@@ -17,39 +18,64 @@ export class ExecuteTestComponent implements OnInit {
 
   levels:Array<LevelsDto>
   types:Array<TypeDto>
+  subTypes:Array<TypeDto>
+  subTypesWeb:Array<TypeDto>
+  subTypesMobile:Array<TypeDto>
   applications:Array<ApplicationsDto>;
-  applicationSelect:ApplicationsDto;
-
   
-
-
+  
   msgResult:string;
   typeMsgResult = 'alert alert-success';
   isMiddleDivVisible: boolean;
 
 
-  appSelect;
+  appSelect:ApplicationsDto;;
   levelSelect;
-  typeSelect;
+  typeSelect:TypeDto;
+  subTypeSelect:TypeDto;
   numberExecution;
   code;
+
+  ramdonSelect:boolean;
 
   constructor(    
     public applicationsService: ApplicationsService,
     public testLevelsService: TestLevelsService,
     public testTypeService: TestTypeService,
-    public executeTestService: ExecuteTestService
+    public executeTestService: ExecuteTestService,
+    public localStorageService: LocalStorageService
   ) { }
 
   ngOnInit() {
+    this.ramdonSelect = false;
     this.isMiddleDivVisible = false;
     this.applications = this.applicationsService.getApplications();
     this.levels = this.testLevelsService.getLevels();
     this.types = this.testTypeService.getTypes();
+    this.subTypesMobile = this.testTypeService.getSubTypesMobile();
+    this.subTypesWeb = this.testTypeService.getSubTypesWeb();
+
   }
 
-  public selectAplication(application) {    
-    this.applicationSelect = this.applications.filter((item) => item.name == application)[0];    
+  public selectAplication() {    
+    console.log("appSelect: ", JSON.stringify(this.appSelect));
+      if (this.appSelect.id === 'HABITICA_WEB') {
+        this.subTypes = this.subTypesWeb;
+      } else {
+        this.subTypes = this.subTypesMobile
+      }      
+  }
+
+  public selectType() {    
+    
+  }
+
+  public selectSubType() {
+    this.ramdonSelect = false;
+    if (this.subTypeSelect.name === 'Ramdon') {
+      this.ramdonSelect = true;
+    }
+
   }
 
 
@@ -69,6 +95,9 @@ export class ExecuteTestComponent implements OnInit {
       this.typeMsgResult = 'alert alert-success';
       console.log('EJECUCION OK: ', JSON.stringify(res));
       this.msgResult = "Ejecución realizada con exito. Codigo: " + this.code;
+
+      this.localStorageService.storeOnLocalStorage(data);
+
       this.isMiddleDivVisible = true;
       
     }, (err) => {

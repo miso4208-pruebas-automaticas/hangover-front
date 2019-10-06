@@ -14,7 +14,7 @@
             <div class="form-group">
               <label for="exampleFormControlSelect1">Aplicación</label>
               <select [(ngModel)]="appSelect" name="appSelect" class="form-control" id="exampleFormControlSelect1"
-                (change)="selectAplication($event.target.value)">
+                (change)="selectAplication()">
                 <option selected="selected" disabled>Seleccione aplicación</option>
                 <option *ngFor="let application of applications" [ngValue]="application">
                   {{ application.name }}
@@ -31,7 +31,7 @@
             <div class="form-group">
               <div class="card text-center" *ngIf="appSelect">
                 <div class="card-header">
-                  {{appSelect.name}}
+                  {{appSelect.id}}
                 </div>
                 <div class="card-block">
                   <p class="card-text">
@@ -54,15 +54,27 @@
 
             <div class="form-group">
               <label for="exampleFormControlSelect3">Tipo de Prueba</label>
-              <select [(ngModel)]="typeSelect" name="typeSelect" class="form-control" id="exampleFormControlSelect3">
+              <select [(ngModel)]="typeSelect" name="typeSelect" class="form-control" id="exampleFormControlSelect3"
+                (change)="selectType()">
                 <option [ngValue]="null" disabled>Seleccione tipo</option>
                 <option *ngFor="let type of types" [ngValue]="type">
                   {{ type.name }}
                 </option>
               </select>
             </div>
+
+            <div class="form-group" *ngIf="typeSelect">
+              <label for="exampleFormControlSelect3">Prueba</label>
+              <select [(ngModel)]="subTypeSelect" name="subTypeSelect" class="form-control" id="exampleFormControlSelect4"
+              (change)="selectSubType()">
+                <option [ngValue]="null" disabled>Seleccione</option>
+                <option *ngFor="let subType of subTypes" [ngValue]="subType">
+                  {{ subType.name }}
+                </option>
+              </select>
+            </div>
   
-            <div class="form-group">
+            <div class="form-group" *ngIf="ramdonSelect">
               <label for="exampleFormControlSelect2">Cantidad de ejecuciones</label>
               <input type="text" [(ngModel)]="numberExecution" class="form-control" name="numberExecution" aria-describedby="emailHelp">
             </div>

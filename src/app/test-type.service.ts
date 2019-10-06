@@ -6,10 +6,16 @@ import { Injectable } from '@angular/core';
 export class TestTypeService {
 
   types = [
-    {name:"E2E"},
-    {name:"headless"},
-    {name:"random"},
-    {name:"Aceptacion"}
+    {name:"E2E"}      
+  ]
+
+  subTypesMobile = [
+    {name:"Ramdon"},
+    {name:"BDD"},    
+  ]
+
+  subTypesWeb = [    
+    {name:"Headless"}
   ]
 
   constructor() { }
@@ -17,5 +23,13 @@ export class TestTypeService {
 
   getTypes() {
     return this.types;
+  }
+
+  getSubTypesMobile() {
+    return this.subTypesMobile;
+  }
+
+  getSubTypesWeb() {
+    return this.subTypesWeb;
   }
 }
