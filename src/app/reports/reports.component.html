@@ -23,7 +23,7 @@
                     <td>{{report.level}}</td>
                     <td>{{report.type}}</td>
                     <td>{{report.subType}}</td>
-                    <td>{{report.numberExecution}}</td>
+                    <td>{{report.numberExecution}}</td>                    
                     <td>
                       <button type="button" class="btn btn-primary" (click)="getReport(report)" data-toggle="modal" data-target="#exampleModalScrollable">
                         Reporte
@@ -48,7 +48,7 @@
   <div class="modal-dialog modal-dialog-scrollable" role="document">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalScrollableTitle">Modal title</h5>
+        <h5 class="modal-title" id="exampleModalScrollableTitle">Reporte codigo: {{reportSelect}}</h5>
         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>

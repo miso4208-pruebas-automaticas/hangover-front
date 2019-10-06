@@ -11,7 +11,10 @@ import { HttpClient } from '@angular/common/http';
 export class ReportsComponent implements OnInit {
 
   reportList;
+  reportSelect;
   reportDetail;
+
+  
 
   constructor(
     public localStorageService:LocalStorageService,
@@ -26,6 +29,7 @@ export class ReportsComponent implements OnInit {
 
 
   public getReport(report) {
+    this.reportSelect = report['code'];
     console.log('report-select: ', JSON.stringify(report));
 
     this.reportsService.executeReport(report).subscribe(res => {
