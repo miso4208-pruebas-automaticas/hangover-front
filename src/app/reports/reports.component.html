@@ -10,6 +10,7 @@
                     <th scope="col">Aplicación</th>
                     <th scope="col">Nivel</th>
                     <th scope="col">Tipo</th>
+                    <th scope="col">Prueba</th>
                     <th scope="col">Ejecuciones</th>
                     <th scope="col">Resultado</th>                    
                   </tr>
@@ -21,7 +22,13 @@
                     <td>{{report.aplication}}</td>
                     <td>{{report.level}}</td>
                     <td>{{report.type}}</td>
+                    <td>{{report.subType}}</td>
                     <td>{{report.numberExecution}}</td>
+                    <td>
+                      <button type="button" class="btn btn-primary" (click)="getReport(report)" data-toggle="modal" data-target="#exampleModalScrollable">
+                        Reporte
+                      </button>
+                    </td>
                   </tr>
                   
                 </tbody>
@@ -31,4 +38,27 @@
 
     </div>
 
+</div>
+
+
+
+
+<!-- Modal -->
+<div class="modal fade" id="exampleModalScrollable" tabindex="-1" role="dialog" aria-labelledby="exampleModalScrollableTitle" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalScrollableTitle">Modal title</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        {{reportDetail}}
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>        
+      </div>
+    </div>
+  </div>
 </div>

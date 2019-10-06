@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {LocalStorageService} from '../local-storage.service';
+import { ReportsService } from '../reports.service';
 import { HttpClient } from '@angular/common/http';
 
 @Component({
@@ -10,15 +11,30 @@ import { HttpClient } from '@angular/common/http';
 export class ReportsComponent implements OnInit {
 
   reportList;
+  reportDetail;
 
   constructor(
     public localStorageService:LocalStorageService,
+    private reportsService:ReportsService,
     private httpClient: HttpClient
   ) { }
 
   ngOnInit() {
     this.reportList = this.localStorageService.getReport();
   
+  }
+
+
+  public getReport(report) {
+    console.log('report-select: ', JSON.stringify(report));
+
+    this.reportsService.executeReport(report).subscribe(res => {
+      console.log('resutado-repor: ', res['report']);
+      this.reportDetail = res['report'];
+    })
+    
+
+
   }
 
 
