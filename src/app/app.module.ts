@@ -11,6 +11,8 @@ import { FormsModule } from '@angular/forms';
 import { ExecuteTestComponent } from './execute-test/execute-test.component';
 import { ReportsComponent } from './reports/reports.component';
 import { StorageServiceModule } from 'ngx-webstorage-service';
+import { AdminComponent } from './admin/admin.component';
+import { AdminApplicationComponent } from './admin-application/admin-application.component';
 
 @NgModule({
   declarations: [
@@ -18,7 +20,7 @@ import { StorageServiceModule } from 'ngx-webstorage-service';
     HomeComponent,
     HeaderComponent,
     FooterComponent,    
-    ExecuteTestComponent, ReportsComponent
+    ExecuteTestComponent, ReportsComponent, AdminComponent, AdminApplicationComponent
   ],
   imports: [
     BrowserModule,
