@@ -11,7 +11,22 @@ export class CrudService {
 
   public getApplications() {
     return this.httpClient.get('http://localhost:5000/crud/applications');
-    
+  }
+
+  public getLevels() {
+    return this.httpClient.get('http://localhost:5000/crud/levels');
+  }
+
+  public getTypes() {
+    return this.httpClient.get('http://localhost:5000/crud/types');
+  }
+
+  public createTypes(data) {
+    return this.httpClient.post('http://localhost:5000/crud/types', data);
+  }
+
+  public createLevel(data) {
+    return this.httpClient.post('http://localhost:5000/crud/levels', data);
   }
 
   public createApp(data) {
@@ -20,8 +35,8 @@ export class CrudService {
 
   public getTypesApp() {
     var types = [
-      {name:"WEB"},
-      {name:"MOBILE"}      
+      { name: "WEB" },
+      { name: "MOBILE" }
     ]
     return types;
   }

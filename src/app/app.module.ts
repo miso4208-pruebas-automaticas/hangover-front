@@ -13,6 +13,8 @@ import { ReportsComponent } from './reports/reports.component';
 import { StorageServiceModule } from 'ngx-webstorage-service';
 import { AdminComponent } from './admin/admin.component';
 import { AdminApplicationComponent } from './admin-application/admin-application.component';
+import { AdminTypesComponent } from './admin-types/admin-types.component';
+import { DinamicDataComponent } from './dinamic-data/dinamic-data.component';
 
 @NgModule({
   declarations: [
@@ -20,7 +22,7 @@ import { AdminApplicationComponent } from './admin-application/admin-application
     HomeComponent,
     HeaderComponent,
     FooterComponent,    
-    ExecuteTestComponent, ReportsComponent, AdminComponent, AdminApplicationComponent
+    ExecuteTestComponent, ReportsComponent, AdminComponent, AdminApplicationComponent, AdminTypesComponent, DinamicDataComponent
   ],
   imports: [
     BrowserModule,

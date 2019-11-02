@@ -8,6 +8,7 @@ import { TestTypeService } from '../test-type.service';
 import { ExecuteTestService } from '../execute-test.service';
 import {LocalStorageService} from '../local-storage.service';
 import { ExecuteDto } from '../data/ExecuteDto';
+import { CrudService } from '../crud.service';
 
 @Component({
   selector: 'app-execute-test',
@@ -21,7 +22,8 @@ export class ExecuteTestComponent implements OnInit {
   subTypes:Array<TypeDto>
   subTypesWeb:Array<TypeDto>
   subTypesMobile:Array<TypeDto>
-  applications:Array<ApplicationsDto>;
+  //applications:Array<ApplicationsDto>;
+  applications;
   
   
   msgResult:string;
@@ -29,7 +31,7 @@ export class ExecuteTestComponent implements OnInit {
   isMiddleDivVisible: boolean;
 
 
-  appSelect:ApplicationsDto;;
+  appSelect;
   levelSelect;
   typeSelect:TypeDto;
   subTypeSelect:TypeDto;
@@ -43,13 +45,15 @@ export class ExecuteTestComponent implements OnInit {
     public testLevelsService: TestLevelsService,
     public testTypeService: TestTypeService,
     public executeTestService: ExecuteTestService,
-    public localStorageService: LocalStorageService
+    public localStorageService: LocalStorageService,
+    private crudService: CrudService
   ) { }
 
   ngOnInit() {
+    this.getApplications();
     this.ramdonSelect = false;
     this.isMiddleDivVisible = false;
-    this.applications = this.applicationsService.getApplications();
+    //this.applications = this.applicationsService.getApplications();
     this.levels = this.testLevelsService.getLevels();
     this.types = this.testTypeService.getTypes();
     this.subTypesMobile = this.testTypeService.getSubTypesMobile();
@@ -57,9 +61,16 @@ export class ExecuteTestComponent implements OnInit {
 
   }
 
+  public getApplications() {
+    this.crudService.getApplications().subscribe(res => {
+      this.applications = res['applications'];
+    })
+
+  }
+
   public selectAplication() {    
     console.log("appSelect: ", JSON.stringify(this.appSelect));
-      if (this.appSelect.id === 'HABITICA_WEB') {
+      if (this.appSelect.id_application === 'HABITICA_WEB') {
         this.subTypes = this.subTypesWeb;
       } else {
         this.subTypes = this.subTypesMobile
@@ -84,7 +95,7 @@ export class ExecuteTestComponent implements OnInit {
     this.code = this.generateCode();
 
     let data:ExecuteDto = new ExecuteDto();
-    data.aplication = this.appSelect.id;
+    data.aplication = this.appSelect.id_application;
     data.level = this.levelSelect.name;
     data.type = this.typeSelect.name;  
     data.subType = this.subTypeSelect.name;
