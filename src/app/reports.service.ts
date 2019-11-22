@@ -13,4 +13,8 @@ export class ReportsService {
     return this.httpClient.post('http://localhost:5000/execute/report', data);
     
   }
+
+  public getExecutions() {
+    return this.httpClient.get('http://localhost:5000/crud/execution-test');
+  }
 }

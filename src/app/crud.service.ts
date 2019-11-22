@@ -33,6 +33,8 @@ export class CrudService {
     return this.httpClient.post('http://localhost:5000/crud/application', data);
   }
 
+  
+
   public getTypesApp() {
     var types = [
       { name: "WEB" },

@@ -15,7 +15,8 @@ export class TestTypeService {
   ]
 
   subTypesWeb = [    
-    {name:"headless"}
+    {name:"headless"},
+    {name:"random"},
   ]
 
   constructor() { }

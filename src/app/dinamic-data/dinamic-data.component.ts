@@ -33,7 +33,7 @@ export class DinamicDataComponent implements OnInit {
         this.dataGenerated = JSON.stringify(res, undefined, 4);
       })
 
-    } else if (this.appSelect.id_application === 'HABITICA') {
+    } else if (this.appSelect.id_application === 'HABITICA_WEB') {
       this.dinamicDataService.getDataHabitica(this.numberData).subscribe(res => {
         console.log(JSON.stringify(res));
         this.dataGenerated = JSON.stringify(res, undefined, 4);
