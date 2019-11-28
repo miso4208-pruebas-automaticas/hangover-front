@@ -55,17 +55,14 @@ export class ReportsComponent implements OnInit {
       url,
       '_blank'
     );
+  }
 
-
-    /*
-    this.reportsService.executeReport(report).subscribe(res => {
-      console.log('resutado-repor: ', res['report']);
-      this.reportDetail = res['report'];
-    })
-    */
-
-
-
+  public getSemilla(report) {
+    let url = report.url_semilla;
+    window.open(
+      url,
+      '_blank'
+    );
   }
 
 

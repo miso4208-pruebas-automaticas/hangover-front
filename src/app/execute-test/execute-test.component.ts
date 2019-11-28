@@ -39,6 +39,7 @@ export class ExecuteTestComponent implements OnInit {
   numberRepetitions;
   executionTime;
   code;
+  generateData:boolean;
 
   ramdonSelect: boolean;
 
@@ -93,23 +94,24 @@ export class ExecuteTestComponent implements OnInit {
 
 
   public executeTest() {
+    console.log("GENERA DATA: ", this.generateData);
     this.isMiddleDivVisible = false;
     this.code = this.generateCode();
 
     let data: ExecuteDto = new ExecuteDto();
     data.app = this.appSelect.id_application;
     data.number
-    data.code = this.code;
-    data.path_project = this.getPathProject(this.subTypeSelect.name);
+    data.code = this.code;    
     data.level = this.levelSelect.name;
     data.type = this.typeSelect.name;
-    data.subType = this.subTypeSelect.name;
-    data.numberExecution = this.numberExecution;
+    data.subType = (this.generateData) ? 'MOCKARO' : this.subTypeSelect.name;
+    data.numberExecution = this.numberExecution > 0 ? this.numberExecution : 1;
     data.executionTime = "1";
-    data.repetitions = this.numberRepetitions;
+    data.repetitions = this.numberRepetitions > 0 ? this.numberRepetitions : 1;
     data.status = "0";
     data.aplication = this.appSelect.id_application;
     data.typeAplication = this.getTypeApplicacion(this.appSelect.id_application);
+    data.path_project = this.getPathProject(data.subType);
     console.log("execution DATA: ", JSON.stringify(data));
 
     this.executeTestService.executeTest(data).subscribe(res => {

@@ -15,6 +15,7 @@
               <th scope="col">Ejecuciones</th>
               <th scope="col">Estado</th>
               <th scope="col">Resultado</th>
+              <th scope="col">Semilla</th>
             </tr>
           </thead>
           <tbody>
@@ -41,6 +42,13 @@
                  
                 </button>
               </div> 
+              </td>
+              <td>
+                <div *ngIf="report.url_semilla != null">
+                  <button type="button" class="btn btn-primary" (click)="getSemilla(report)">
+                    Semilla                   
+                  </button>
+                </div>
               </td>
             </tr>
 
